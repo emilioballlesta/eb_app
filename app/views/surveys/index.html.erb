@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="color:rgb(250, 128, 114)"> Emiliana Balanda Surveys</h1>
+<h2>Plataforma oficial de encuestas</h2>
+
+<table class='table'>
+  <thead class="thead-dark">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo</th>
+      <th>Descripción</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.name %></td>
+        <td><%= survey.kind %></td>
+        <td><%= survey.description %></td>
+        <td><%= link_to survey do %>
+        <i class="fas fa-eye"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_survey_path(survey) do %>
+          <i class="fas fa-edit"></i>
+          <% end %>
+           </td>
+        <td><%= link_to survey, method: :delete, data: { confirm: 'Estas seguro XD?' } do %>
+          <i class="fas fa-bomb"></i>
+          <% end %>
+           </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Survey', new_survey_path %>
